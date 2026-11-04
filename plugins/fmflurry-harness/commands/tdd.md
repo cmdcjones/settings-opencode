@@ -1,5 +1,5 @@
 ---
-description: Enforce TDD workflow with 80%+ coverage. /tdd refactor pins current behavior first.
+description: When behavior changes, add a test that fails before the fix. /tdd refactor pins current behavior first.
 agent: main
 subtask: true
 ---
@@ -52,19 +52,9 @@ RED → GREEN → REFACTOR → REPEAT
 - Remove duplication
 - Run tests - verify they still PASS
 
-### Step 5: Check Coverage
-- Target: 80% minimum
-- 100% for critical business logic
-- Add more tests if needed
-
-## Coverage Requirements
-
-| Code Type | Minimum |
-|-----------|---------|
-| Standard code | 80% |
-| Financial calculations | 100% |
-| Authentication logic | 100% |
-| Security-critical code | 100% |
+### Step 5: Run the tests
+- Run the tests that cover the change and paste the output.
+- Do not chase a coverage percentage.
 
 ## Test Types to Include
 

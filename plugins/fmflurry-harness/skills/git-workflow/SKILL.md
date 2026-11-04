@@ -250,7 +250,7 @@ In all cases:
    - Write tests first (RED)
    - Implement to pass tests (GREEN)
    - Refactor (IMPROVE)
-   - Verify 80%+ coverage
+   - Run the tests that cover the change
 
 3. **Code Review**
    - Use **code-reviewer** agent immediately after writing code

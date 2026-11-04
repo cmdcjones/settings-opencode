@@ -366,8 +366,9 @@ if [ -n "${AGENT_HARNESS_KPI_TS:-}" ]; then ts="$AGENT_HARNESS_KPI_TS"; else ts=
 project_hook_owns_emit() {
   local self top proj pdir
   self="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P 2>/dev/null)" || return 1
+  home_phys="$(cd "${HOME:-/}" && pwd -P 2>/dev/null)" || home_phys="${HOME:-}"
   case "$self" in
-    "${HOME:-}/.claude/hooks" | "${HOME:-}/.config/opencode/scripts/agent-harness/hooks") ;;
+    "${HOME:-}/.claude/hooks" | "$home_phys/.claude/hooks" | "${HOME:-}/.config/opencode/scripts/agent-harness/hooks" | "$home_phys/.config/opencode/scripts/agent-harness/hooks") ;;
     *) return 1 ;;
   esac
   top="$(git rev-parse --show-toplevel 2>/dev/null)" || return 1

@@ -1,40 +1,9 @@
----
-paths:
-  - "**/*.test.*"
-  - "**/*.spec.*"
----
-# Testing Requirements
+# Testing
 
-## Minimum Test Coverage: 80%
+When behavior changes, add a test that fails before the fix. A behavior-preserving restructure starts with characterization tests that pass immediately on the unchanged code. The restructure does not edit those tests.
 
-Test Types (ALL required):
-1. **Unit Tests** - Individual functions, utilities, components
-2. **Integration Tests** - API endpoints, database operations
-3. **E2E Tests** - Critical user flows (framework chosen per language)
+Load `test-behavior-not-implementation` for how a test should be written. `/tdd refactor` is the characterization path. New behavior uses the `tdd` skill.
 
-## Test-Driven Development
+Arrange, then act, then assert. The test name states the behavior.
 
-MANDATORY workflow:
-1. Write test first (RED)
-2. Run test - it should FAIL
-3. Write minimal implementation (GREEN)
-4. Run test - it should PASS
-5. Refactor (IMPROVE)
-6. Verify coverage (80%+)
-
-## Troubleshooting Test Failures
-
-1. If the `tdd-guide` agent is installed, dispatch to that agent. Otherwise the main agent loads the `tdd` skill and does the troubleshooting inline.
-2. Check test isolation
-3. Verify mocks are correct (unit/integration tests only; E2E tests run against real services)
-4. Fix implementation, not tests (unless tests are wrong)
-
-## Agent Support
-
-- If the `tdd-guide` agent is installed, dispatch to that agent for new features (write-tests-first). Otherwise the main agent loads the `tdd` skill and does that work inline.
-
-## Shape
-
-Arrange, then act, then assert. The test name states the behavior, not "works".
-
-why-not-tooled: test names and AAA shape are not one lint rule across languages.
+why-not-tooled: test names are not one lint rule across languages.

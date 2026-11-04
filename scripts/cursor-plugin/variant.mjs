@@ -64,7 +64,7 @@ export function readmeCopy(id) {
     return {
       intro: 'Monolith for Cursor. The primary agent reads, writes, plans, and implements in this session. Nothing has to run before the first edit. Load a skill for the work, and spawn a subagent only for isolated review, parallel investigation, or noisy output. `/orchestrate` is optional.\n\nThis build is Monolith. `./install-cursor.sh --variant conductor` (or `HARNESS_VARIANT=conductor`) builds the conductor-led plugin instead.',
       agentsBlurb: 'Review and noisy-output subagents. Folded roles load as skills. The primary agent writes',
-      skillsBlurb: 'Reusable skills, including the `threejs` and `openspec` umbrellas and an optional `conductor` skill for `/orchestrate`',
+      skillsBlurb: 'Reusable skills, plus an optional `conductor` skill for `/orchestrate`',
       rulesBlurb: 'Always-on Monolith baseline. The primary agent may write. There is no first-tool gate. TypeScript rules apply on matching files',
       dispatchLead: 'Subagents carry `tier:` and no `model:` in their frontmatter. The primary agent passes the tier\'s Cursor model on every `Task` call.',
       limits: [

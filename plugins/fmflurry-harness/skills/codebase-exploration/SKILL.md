@@ -21,7 +21,7 @@ Skip the CodeMemory mandate below when CodeMemory is off. Do not call CodeMemory
 
 **ROUTING PRECEDENCE:** First-tool routing gate (Orchestration & Routing) determines whether to delegate to a specialist Agent. After that gate is satisfied, CodeMemory-first mandate applies to exploration within whichever agent is executing (including the primary when no specialist matches).
 
-**HARD DEFAULT: When `mcp__code-memory__*` tools are connected, they are the FIRST and REQUIRED choice for any code search, symbol lookup, callers/callees, definitions, dependencies, or importers. Grep/Glob/Bash are fallbacks ONLY — reach for them only when code-memory cannot answer (raw directory listing, filename glob, reading a known path region, or no index for the project). Do not "start with grep" or "try grep first". Start with code-memory.**
+**When the CodeMemory index is up, one retrieve is enough to orient. Otherwise search. A missing or cold index is not a failed turn. Do not require a memory call before grep.**
 
 **Applies whenever the `code-memory` MCP server is connected (tools named `mcp__code-memory__*`). Skip entirely if the server is absent.**
 
@@ -54,7 +54,7 @@ Fall back to `rtk grep` / `rtk find` / `Grep` / `Glob` / `Bash` only when code-m
 
 `mcp__code-memory__*` requires a `project` arg. Use the repo slug (typically the directory name of the current working dir). Do not use sentinels like `auto` or `default` — they are rejected.
 
-If unsure of the slug, infer from cwd basename. If the first call returns empty results because the project isn't ingested, tell the user — do not silently fall back to grep and pretend code-memory had no answer.
+If unsure of the slug, infer from cwd basename. If the first call returns empty because the project is not ingested, search. Do not treat a cold index as a failed turn.
 
 ## Anti-patterns
 
@@ -75,7 +75,7 @@ Skip the CodeMemory mandate below when CodeMemory is off. Do not call CodeMemory
 
 **ROUTING PRECEDENCE:** The mandatory first-tool routing gate (when your harness has one) runs first. Once that gate is satisfied, the CodeMemory-first mandate below applies to exploration within whichever agent is executing — including the primary agent when no specialist matches.
 
-**HARD DEFAULT: When the `code-memory` MCP server is connected (tools named `code-memory_*`), those tools are the FIRST and REQUIRED choice for any code search, symbol lookup, callers/callees, definitions, dependencies, or importers. `grep` / `glob` / `bash` are fallbacks ONLY — reach for them only when code-memory cannot answer (raw directory listing, filename glob, reading a known path region, or no index for the project). Do not "start with grep" or "try grep first". Start with code-memory.**
+**When the CodeMemory index is up, one retrieve is enough to orient. Otherwise search. A missing or cold index is not a failed turn. Do not require a memory call before grep.**
 
 **Skip entirely if the `code-memory` server is absent.**
 
@@ -108,7 +108,7 @@ Fall back to `grep` / `find` / `glob` / `bash` only when code-memory cannot answ
 
 `code-memory_*` requires a `project` arg. Use the repo slug (typically the directory name of the current working dir). Do not use sentinels like `auto` or `default` — they are rejected.
 
-If unsure of the slug, infer from cwd basename. If the first call returns empty results because the project isn't ingested, tell the user — do not silently fall back to grep and pretend code-memory had no answer.
+If unsure of the slug, infer from cwd basename. If the first call returns empty because the project is not ingested, search. Do not treat a cold index as a failed turn.
 
 ## Anti-patterns
 

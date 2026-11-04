@@ -1,6 +1,6 @@
 ---
 name: tdd-guide
-description: "MUST delegate for new features, bug fixes, or refactors that need tests. A refactor pins current behavior first with characterization tests that already pass. Enforces RED-GREEN-REFACTOR for new behavior and 80%+ coverage. Writes test files only; the orchestrator delegates implementation to coder."
+description: "MUST delegate for new features, bug fixes, or refactors that need tests. A refactor pins current behavior first with characterization tests that already pass. Enforces RED-GREEN-REFACTOR for new behavior. Writes test files only; the orchestrator delegates implementation to coder."
 model: sonnet
 ---
 

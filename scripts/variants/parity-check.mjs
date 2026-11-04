@@ -59,34 +59,13 @@ for (const hook of hooks) {
   if (!exists(path.join('.claude/hooks', hook))) fail(`missing hook ${hook}`);
 }
 
-for (const family of ['threejs', 'openspec']) {
-  for (const root of ['skills', '.claude/skills']) {
-    if (!exists(`${root}/${family}/SKILL.md`)) fail(`missing umbrella ${root}/${family}`);
-  }
-  const left = path.join(repo, 'skills', family);
-  const right = path.join(repo, '.claude/skills', family);
-  const files = (dir) => fs.readdirSync(dir, { recursive: true }).filter((rel) => fs.statSync(path.join(dir, rel)).isFile()).sort();
-  const a = files(left);
-  const b = files(right);
-  if (a.join('\n') !== b.join('\n')) fail(`${family} file lists differ across skill roots`);
-  for (const rel of a) {
-    const la = fs.readFileSync(path.join(left, rel));
-    const lb = fs.readFileSync(path.join(right, rel));
-    if (!la.equals(lb)) fail(`${family} content differs: ${rel}`);
-  }
-}
-for (const root of ['skills', '.claude/skills']) {
-  for (const name of fs.readdirSync(path.join(repo, root))) {
-    if (/^(threejs|openspec)-/.test(name)) fail(`old family skill still present: ${root}/${name}`);
-  }
-}
 if (exists('skills/conductor') || exists('.claude/skills/conductor')) {
   fail('conductor skill must stay a Monolith overlay, not a shared skill');
 }
 if (!exists('variants/monolith/skills/conductor/SKILL.md')) fail('missing monolith conductor skill');
 
 const folded = [
-  'planner', 'coder', 'writer', 'doc-updater', 'architect', 'refactor-cleaner', 'scout', 'gaudi',
+  'planner', 'coder', 'writer', 'doc-updater', 'architect', 'refactor-cleaner', 'scout',
   'testing', 'security', 'coding-style', 'code-comments', 'autonomy', 'question-handling',
   'enforcement-ladder', 'tool-budget', 'verification-gate',
 ];
@@ -94,7 +73,7 @@ for (const name of folded) {
   if (!exists(`skills/${name}/SKILL.md`)) fail(`missing shared skill ${name}`);
   if (exists(`.claude/skills/${name}`)) fail(`skill ${name} is duplicated under .claude/skills`);
 }
-for (const twin of ['tdd', 'git-workflow', 'api-spec-openapi', 'gdpr-compliance', 'postgres-health-check']) {
+for (const twin of ['tdd', 'git-workflow']) {
   if (!exists(`skills/${twin}/SKILL.md`) && !exists(`.claude/skills/${twin}/SKILL.md`)) fail(`missing twin skill ${twin}`);
 }
 

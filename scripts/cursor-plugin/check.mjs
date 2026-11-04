@@ -99,9 +99,6 @@ if (variant === 'monolith') {
   if (!/primary agent/i.test(modelText) || !/allowed to write|may write/i.test(modelText)) {
     errors.push('rules/monolith.mdc does not allow the primary agent to write');
   }
-  for (const skill of ['threejs', 'openspec']) {
-    if (!fs.existsSync(path.join(skillsDir, skill, 'SKILL.md'))) errors.push(`missing umbrella skill ${skill}`);
-  }
   const conductorSkillPath = path.join(skillsDir, 'conductor/SKILL.md');
   const conductorSkill = fs.existsSync(conductorSkillPath) ? fs.readFileSync(conductorSkillPath, 'utf8') : '';
   if (!/optional/i.test(conductorSkill) || !conductorSkill.includes('The primary agent still writes.')) {
@@ -122,7 +119,7 @@ if (variant === 'monolith') {
   const judgeText = fs.existsSync(path.join(agentsDir, 'comment-judge.md'))
     ? fs.readFileSync(path.join(agentsDir, 'comment-judge.md'), 'utf8')
     : '';
-  if (!/persona=haruspex|haruspex/.test(judgeText)) errors.push('agents/comment-judge.md must cover the haruspex persona');
+  if (!/comment-judge skill/.test(judgeText)) errors.push('agents/comment-judge.md must load the comment-judge skill');
   const manifest = JSON.parse(fs.readFileSync(path.resolve(here, '../../variants/monolith/manifest.json'), 'utf8'));
   const dangling = scanMonolithTree(out, manifest);
   if (dangling.length) {

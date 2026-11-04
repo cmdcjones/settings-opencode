@@ -67,8 +67,8 @@ test('default cursor plugin build is monolith', () => {
     assert.match(baseline, /composer-2\.5/);
     assert.match(baseline, /Never `-fast`/);
     assert.doesNotMatch(baseline, /claude-|gpt-|gemini-/);
-    assert.equal(fs.existsSync(path.join(out, 'skills/threejs/SKILL.md')), true);
-    assert.equal(fs.existsSync(path.join(out, 'skills/openspec/SKILL.md')), true);
+    assert.equal(fs.existsSync(path.join(out, 'skills/threejs/SKILL.md')), false);
+    assert.equal(fs.existsSync(path.join(out, 'skills/openspec/SKILL.md')), false);
     const conductor = fs.readFileSync(path.join(out, 'skills/conductor/SKILL.md'), 'utf8');
     assert.match(conductor, /optional/i);
     assert.match(conductor, /The primary agent still writes\./);

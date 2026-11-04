@@ -72,6 +72,6 @@ When CodeMemory is off (cloud or remote agent, `FMFLURRY_CODEMEMORY=off`, or aut
 - **Cleared.** What you checked and why it's fine.
 - **Before you merge.** The cheapest test or repro that catches the real bug, including the script you wrote.
 
-Write it through `humanizer`, cite real code, and strip anything private before it goes anywhere public.
+Write it in plain words, cite real code, and strip anything private before it goes anywhere public.
 
 **Reply:** the writeup above, with the one safety fact either proven or marked unproven.

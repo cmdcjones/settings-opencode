@@ -22,7 +22,7 @@ Execute comprehensive verification:
 3. **Unit Tests**: `npm test`
 4. **Integration Tests**: `npm run test:integration` (if available)
 5. **Build**: `npm run build`
-6. **Coverage Check**: Verify 80%+ coverage
+6. **Project check**: Run the project verification command (`verify-this` when it exists) and paste the output
 
 ## Verification Checklist
 
@@ -35,7 +35,7 @@ Execute comprehensive verification:
 
 ### Tests
 - [ ] All tests passing
-- [ ] Coverage >= 80%
+- [ ] Tests that cover the change were run
 - [ ] Edge cases covered
 - [ ] Error conditions tested
 

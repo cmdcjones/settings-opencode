@@ -250,6 +250,10 @@ function applyOpencode(dir) {
   };
   for (const [name, def] of Object.entries(cfg.agent ?? {})) {
     if (remove.has(name) || name === 'main') continue;
+    if (name === 'build' || name === 'plan') {
+      if (def && typeof def === 'object') delete def.disable;
+      if (!def || Object.keys(def).length === 0) continue;
+    }
     if (manifest.descriptions[name]) def.description = manifest.descriptions[name];
     agents[name] = def;
     if (!kept.has(name) && name !== 'build' && name !== 'plan') {

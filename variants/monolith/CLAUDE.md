@@ -4,29 +4,30 @@ If you were spawned as a subagent, follow only your agent prompt. The rest of th
 
 You are the primary agent. You may read, write, edit, plan, and implement in this session. Nothing has to run before the first edit. The primary agent is allowed to write.
 
+Do not open a task with a question. Ask only when the repository cannot answer a load-bearing unknown, or when the user asks you to ask. Git and worktree guards stay in force.
+
+When the CodeMemory index is up, one retrieve is enough to orient. Otherwise search. Do not require a memory call before grep.
+
 Load a skill when its description matches, and do that work here:
 
-- code: `coder`, `coding-standards`, `coding-style`, `code-comments`, `security`
-- tests: `tdd`, `testing`
+- code: `coder`, `coding-style`, `code-comments`, `security`
+- tests: `tdd`, `testing`, `test-behavior-not-implementation`
+- verification: `verify-this` when the project has one, otherwise `verification-gate`
 - git and pull requests: `git-workflow`
 - plans and design: `planner`, `architect`, `socratic-design`
 - prose: `writer`, `doc-updater`
-- HTTP specs: `api-spec-openapi` (SmartBear stays in the project's own MCP config)
-- privacy: `gdpr-compliance`
-- live Postgres: `postgres-health-check`, `postgres-backup-restore`, `postgres-container-ops`, `postgres-performance-tuning`
-- 3D: `gaudi`, then `threejs` for the browser
 - cleanup: `refactor-cleaner`
 - a file manifest: `scout`
-- questions, autonomy, enforcement: `question-handling`, `autonomy`, `enforcement-ladder`
+- enforcement: `enforcement-ladder`
 - optional coordination: `/orchestrate` loads `conductor`
 
-Spawn a subagent only for a clean context, parallel fan-out, or noisy output:
+Spawn a subagent only for a clean context, parallel fan-out, or noisy output. Spawn `code-reviewer` after a meaningful change, not before the first edit.
 
-- `code-reviewer` — diff review
+- `code-reviewer` — diff review after a meaningful change
 - `security-reviewer` — auth, secrets, input, personal data
 - `database-reviewer` — SQL, migrations, RLS
-- `cop` — Angular or .NET pre-merge review; it loads `angular-cop` or `dotnet-cop`
-- `comment-judge` — comment rubric, or `persona=haruspex`
+- `cop` — pre-merge review when an `angular-cop` or `dotnet-cop` skill is installed
+- `comment-judge` — comment rubric
 - `why-investigator` — one evidence category; run several in parallel
 - `e2e-runner` — browser flows
 - `ecosystem-auditor` — harness parity audit
@@ -34,7 +35,7 @@ Spawn a subagent only for a clean context, parallel fan-out, or noisy output:
 
 Synthesize `why-investigator` output in this session. Do not spawn a synthesizer.
 
-Hooks enforce secrets, the exploratory tool budget, autonomy git guards, and the ship stop gate. Obey the hook. Before you say done, run the project build, lint, and the tests that cover the change, and paste the output.
+Hooks enforce secrets, the exploratory tool budget, autonomy git guards, and the ship stop gate. Obey the hook. Before you say done, run the project's verification command yourself and paste the output. If a `verify-this` skill exists, that command is the one. A subagent saying the build passed does not count.
 
 On Cursor, review subagents default to `grok-4.7-xhigh` and parallel fan-out defaults to `grok-4.7-medium`. Do not name a Claude, GPT, or Gemini model. Do not use a fast tier.
 

@@ -17,8 +17,6 @@ const pinSources = [
   'prompts/agents/tdd-guide.txt',
   'skills/tdd/SKILL.md',
   '.claude/skills/tdd/SKILL.md',
-  'skills/tdd-workflow/SKILL.md',
-  '.claude/skills/tdd-workflow/SKILL.md',
 ];
 
 test('refactor mode pins current behavior and freezes those tests', () => {

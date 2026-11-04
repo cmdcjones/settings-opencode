@@ -5,8 +5,9 @@ Applies to every task. The toggle is `agent-harness autonomy on|off|status`. The
 
 ## Rules
 
-**(a) One clarification round first.** Every task starts with one `ask` tool round on the load-bearing unknowns.
-Each question is dependency-safe and comes with a recommended option. Skip the round only in autonomous mode.
+**(a) Do not open with a question.** Start on the work. Ask only when the repository cannot answer a
+load-bearing unknown, or when the user asks you to ask. Each question is dependency-safe and comes with a
+recommended option. Autonomous mode never asks.
 
 **(b) Notify only when needed.** Use `agent-harness notify question|waiting|done|failure "<msg>" [pr]`.
 Notify when a human's attention is needed, and when the goal ends:

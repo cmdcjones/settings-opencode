@@ -300,7 +300,7 @@
       },
     },
     "tdd-guide": {
-      "description": "MUST delegate for new features, bug fixes, or refactors that need tests. A refactor pins current behavior first with characterization tests that already pass. Enforces RED-GREEN-REFACTOR for new behavior and 80%+ coverage. Writes test files only; delegates implementation to coder.",
+      "description": "MUST delegate for new features, bug fixes, or refactors that need tests. A refactor pins current behavior first with characterization tests that already pass. Enforces RED-GREEN-REFACTOR for new behavior. Writes test files only; delegates implementation to coder.",
       "mode": "subagent",
       "model": "{env:OPENCODE_MODEL_SUBAGENT_WORKER}",
       "prompt": "{file:prompts/agents/tdd-guide.txt}",
@@ -533,12 +533,6 @@
         "blender_*": true,
       },
     },
-    "build": {
-      "disable": true,
-    },
-    "plan": {
-      "disable": true,
-    },
   },
   "command": {
     "ship": {
@@ -576,15 +570,9 @@
       "subtask": true,
     },
     "tdd": {
-      "description": "Enforce TDD workflow with 80%+ test coverage. /tdd refactor pins current behavior first.",
+      "description": "When behavior changes, add a test that fails before the fix. /tdd refactor pins current behavior first.",
       "template": "{file:commands/tdd.md}\n\n$ARGUMENTS",
       "agent": "tdd-guide",
-      "subtask": true,
-    },
-    "api-spec": {
-      "description": "Generate Zalando-compliant OpenAPI 3.1 specs (one per bounded context) and publish to SmartBear SwaggerHub",
-      "template": "{file:commands/api-spec.md}\n\n$ARGUMENTS",
-      "agent": "api-spec-architect",
       "subtask": true,
     },
     "cop-review": {
@@ -597,12 +585,6 @@
       "description": "Run comprehensive security review",
       "template": "{file:commands/security.md}\n\n$ARGUMENTS",
       "agent": "security-reviewer",
-      "subtask": true,
-    },
-    "gdpr-review": {
-      "description": "Audit the codebase (or a given path/feature) for GDPR compliance and produce a prioritized findings report",
-      "template": "{file:commands/gdpr-review.md}\n\n$ARGUMENTS",
-      "agent": "gdpr-specialist",
       "subtask": true,
     },
     "build-fix": {
@@ -661,24 +643,6 @@
       "description": "Generate skills from git history",
       "template": "{file:commands/skill-create.md}\n\n$ARGUMENTS",
     },
-    "db-health": {
-      "description": "Run a read-only PostgreSQL instance health battery (vacuum/bloat, wraparound, connections, indexes, checkpoints, archiver, container) and produce a tiered advisory report",
-      "template": "{file:commands/db-health.md}\n\n$ARGUMENTS",
-      "agent": "postgres-dba",
-      "subtask": true,
-    },
-    "dependabot-friday": {
-      "description": "Dependabot Friday triage — inventory open Dependabot PRs, check CI and ignore guardrails, produce a report-only merge plan (no merge without explicit user OK)",
-      "template": "{file:commands/dependabot-friday.md}\n\n$ARGUMENTS",
-      "agent": "git-specialist",
-      "subtask": true,
-    },
-    "db-backup-check": {
-      "description": "Audit PostgreSQL backup/restore posture (archiving, pg_stat_archiver, dumps, volume persistence) and emit advisory setup commands for human execution",
-      "template": "{file:commands/db-backup-check.md}\n\n$ARGUMENTS",
-      "agent": "postgres-dba",
-      "subtask": true,
-    },
     "show-me": {
       "description": "Explain a topic visually by producing a self-contained HTML artifact (diagram, infographic, short slide deck, or statechart), opening it, and showing PNG screenshots of it. Usage: /show-me <topic>",
       "template": "{file:commands/show-me.md}\n\n$ARGUMENTS",
@@ -696,16 +660,6 @@
       "agent": "comment-judge",
       "subtask": true,
     },
-    "interfectio-commentarum": {
-      "description": "Spawn Haruspex Commentorum, fix accepted comment findings, and offer encodings for claimed constraints. Usage: /interfectio-commentarum [path|diff]",
-      "template": "{file:commands/interfectio-commentarum.md}\n\n$ARGUMENTS",
-      "agent": "conductor",
-    },
-    "for-real": {
-      "description": "Restate the last message in plain human language, with no jargon. Usage: /for-real",
-      "template": "{file:commands/for-real.md}\n\n$ARGUMENTS",
-      "agent": "conductor",
-    },
     "why": {
       "description": "Investigate why code is shaped the way it is — design rationale, regressions, postmortems, data-backed thresholds — by querying historical-evidence MCPs in parallel and returning a cited read on decisions and tradeoffs. Usage: /why <question>",
       "template": "{file:commands/why.md}\n\n$ARGUMENTS",
@@ -714,11 +668,6 @@
     "blast-radius": {
       "description": "Find what a change could break beyond the diff before it ships, and prove the one fact it's safe because of by running real code instead of writing it up. Usage: /blast-radius <change|diff>",
       "template": "{file:commands/blast-radius.md}\n\n$ARGUMENTS",
-      "agent": "conductor",
-    },
-    "chimera": {
-      "description": "Spawn N parallel candidates at the same task, pick a base, graft the strongest parts of the losers into it, and verify the synthesized result. Usage: /chimera <task>",
-      "template": "{file:commands/chimera.md}\n\n$ARGUMENTS",
       "agent": "conductor",
     },
     "fix-ci": {

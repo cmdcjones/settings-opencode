@@ -14,7 +14,7 @@ This build is Monolith. `./install-cursor.sh --variant conductor` (or `HARNESS_V
 | Component | Contents |
 | --- | --- |
 | Agents (9) | Review and noisy-output subagents. Folded roles load as skills. The primary agent writes |
-| Skills (82) | Reusable skills, including the `threejs` and `openspec` umbrellas and an optional `conductor` skill for `/orchestrate` |
+| Skills (82) | Reusable skills, plus an optional `conductor` skill for `/orchestrate` |
 | Commands (65) | Slash commands for review, git, planning and verification |
 | Rules (17) | Always-on Monolith baseline. The primary agent may write. There is no first-tool gate. TypeScript rules apply on matching files |
 | Hooks | Pre-tool-use guards, command rewriting, code-memory preference, tool budget, stop checks |

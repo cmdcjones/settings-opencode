@@ -75,7 +75,7 @@ test('monolith overlay keeps conductor sources and installs the lean roster', ()
   assert.equal(fs.existsSync(path.join(claude, 'hooks/tool-budget.sh')), true);
   assert.equal(fs.existsSync(path.join(claude, 'hooks/autonomy-git-guard.sh')), true);
   assert.doesNotMatch(fs.readFileSync(path.join(claude, 'rule-sources/common/orchestration.md'), 'utf8'), /First-Tool Gate/);
-  assert.match(fs.readFileSync(path.join(claude, 'rule-sources/common/testing.md'), 'utf8'), /80%/);
+  assert.match(fs.readFileSync(path.join(claude, 'rule-sources/common/testing.md'), 'utf8'), /fails before the fix/);
   assert.equal(fs.readFileSync(path.join(claude, '.harness-variant'), 'utf8').trim(), 'monolith');
   assert.equal(fs.existsSync(path.join(claude, 'skills/conductor/SKILL.md')), true);
   assert.equal(fs.existsSync(path.join(opencode, 'skills/conductor/SKILL.md')), true);

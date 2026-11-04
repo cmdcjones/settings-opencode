@@ -363,7 +363,7 @@ else
     # Kept-overlap watchlist: these topics must be identical wherever present.
     # Content drift is already counted above. A copy missing from some roots
     # adds drift. A topic absent from every root is not a divergent copy.
-    KEEP_OVERLAP="subagent-routing question-handling codememory-first verification-gate harness-parity caveman-ultra"
+    KEEP_OVERLAP="subagent-routing question-handling codememory-first verification-gate harness-parity"
     read -r -a keep_arr <<< "$KEEP_OVERLAP"
     printf '\nKept-overlap watchlist (must stay identical):\n'
     for k in "${keep_arr[@]}"; do
