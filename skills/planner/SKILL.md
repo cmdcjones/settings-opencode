@@ -7,10 +7,10 @@ Produce a phased plan with dependencies and risks. Use `socratic-design` when a 
 
 Do this in the current session. Do not spawn a subagent for this role.
 
-Read the first procedure file that exists and follow it. Ignore YAML frontmatter.
+Expand `~` to the home directory. Read the first procedure file that exists and follow it. Ignore YAML frontmatter. Prefer absolute paths.
 
-1. `prompts/agents/planner.txt`
-2. `agent-sources/planner.md`
+1. `~/.config/opencode/prompts/agents/planner.txt`
+2. `~/.claude/agent-sources/planner.md`
 3. `.claude/agents/planner.md`
 
 That file is the procedure. This skill is the trigger.

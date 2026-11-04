@@ -7,10 +7,10 @@ Update docs from the code. Do not invent behavior the code does not have.
 
 Do this in the current session. Do not spawn a subagent for this role.
 
-Read the first procedure file that exists and follow it. Ignore YAML frontmatter.
+Expand `~` to the home directory. Read the first procedure file that exists and follow it. Ignore YAML frontmatter. Prefer absolute paths.
 
-1. `prompts/agents/doc-updater.txt`
-2. `agent-sources/doc-updater.md`
+1. `~/.config/opencode/prompts/agents/doc-updater.txt`
+2. `~/.claude/agent-sources/doc-updater.md`
 3. `.claude/agents/doc-updater.md`
 
 That file is the procedure. This skill is the trigger.

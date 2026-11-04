@@ -7,10 +7,10 @@ Manifest, paths ruled out, and unresolved items. No analysis and no recommendati
 
 Do this in the current session. Do not spawn a subagent for this role.
 
-Read the first procedure file that exists and follow it. Ignore YAML frontmatter.
+Expand `~` to the home directory. Read the first procedure file that exists and follow it. Ignore YAML frontmatter. Prefer absolute paths.
 
-1. `prompts/agents/scout.txt`
-2. `agent-sources/scout.md`
+1. `~/.config/opencode/prompts/agents/scout.txt`
+2. `~/.claude/agent-sources/scout.md`
 3. `.claude/agents/scout.md`
 
 That file is the procedure. This skill is the trigger.

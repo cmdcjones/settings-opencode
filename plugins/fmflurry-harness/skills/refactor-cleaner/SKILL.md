@@ -7,10 +7,10 @@ Remove only what you can show is unused or duplicated. Run the build after the c
 
 Do this in the current session. Do not spawn a subagent for this role.
 
-Read the first procedure file that exists and follow it. Ignore YAML frontmatter.
+Expand `~` to the home directory. Read the first procedure file that exists and follow it. Ignore YAML frontmatter. Prefer absolute paths.
 
-1. `prompts/agents/refactor-cleaner.txt`
-2. `agent-sources/refactor-cleaner.md`
+1. `~/.config/opencode/prompts/agents/refactor-cleaner.txt`
+2. `~/.claude/agent-sources/refactor-cleaner.md`
 3. `.claude/agents/refactor-cleaner.md`
 
 That file is the procedure. This skill is the trigger.

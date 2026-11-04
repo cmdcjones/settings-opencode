@@ -7,10 +7,10 @@ Before the first edit of a change, load `open-pr-check`. Before source edits, lo
 
 Do this in the current session. Do not spawn a subagent for this role.
 
-Read the first procedure file that exists and follow it. Ignore YAML frontmatter.
+Expand `~` to the home directory. Read the first procedure file that exists and follow it. Ignore YAML frontmatter. Prefer absolute paths.
 
-1. `prompts/agents/coder.txt`
-2. `agent-sources/coder.md`
+1. `~/.config/opencode/prompts/agents/coder.txt`
+2. `~/.claude/agent-sources/coder.md`
 3. `.claude/agents/coder.md`
 
 That file is the procedure. This skill is the trigger.
